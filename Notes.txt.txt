@@ -1,7 +1,7 @@
 wwwroot Folder :
 
-By default, the wwwroot folder in the ASP.NET Core project is treated as a web root folder. Static files can be stored in any folder under the web root and accessed with a relative path to that root.
+You can access static files with base URL and file name. For example, we can access above app.css file in the css folder 
 
-In the standard ASP.NET application, static files can be served from the root folder of an application or any other folder under it. This has been changed in ASP.NET Core. Now, only those files that are in the web root - wwwroot folder can be served over an http request. All other files are blocked and cannot be served by default.
+by http://localhost:<port>/css/app.css.
 
-Generally, there should be separate folders for the different types of static files such as JavaScript, CSS, Images, library scripts etc. in the wwwroot folder.
+Remember, you need to include a middleware for serving static files in the Configure method of Startup.cs.
