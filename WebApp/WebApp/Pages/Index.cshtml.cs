@@ -8,8 +8,10 @@ namespace WebApp.Pages
     public class IndexModel : PageModel
     {       
 
-        public void OnGet([FromServices] ILog log)
+        public void OnGet()
         {
+            var services = this.HttpContext.RequestServices;
+            var log = (ILog)services.GetService(typeof(ILog));
             log.info("Indexe page requested !");
         }
     }
