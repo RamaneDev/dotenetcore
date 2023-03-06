@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebApp.services;
 
 namespace WebApp
 {
@@ -12,6 +13,9 @@ namespace WebApp
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            
+            // add ILog service
+            builder.Services.AddSingleton<ILog, Log>();
 
             var app = builder.Build();
 

@@ -1,21 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using WebApp.services;
 
 namespace WebApp.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILog _log;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ILog log)
         {
-            _logger = logger;
+            _log = log;
         }
 
         public void OnGet()
         {
-
+            _log.info("Indexe page requested !");
         }
     }
 }
