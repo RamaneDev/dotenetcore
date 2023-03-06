@@ -1,7 +1,17 @@
-wwwroot Folder :
+IServiceCollection :
+As you know, we can register application services with built-in IoC container in the Configure method of Startup class by using IServiceCollection. IServiceCollection interface is an empty interface. It just inherits IList<servicedescriptor>. See the source code here.
 
-You can access static files with base URL and file name. For example, we can access above app.css file in the css folder 
+The ServiceCollection class implements IServiceCollection interface. See the ServiceCollection source code here.
 
-by http://localhost:<port>/css/app.css.
+So, the services you add in the IServiceCollection type instance, it actually creates an instance of ServiceDescriptor and adds it to the list.
 
-Remember, you need to include a middleware for serving static files in the Configure method of Startup.cs.
+IServiceProvider :
+IServiceProvider includes GetService method. The ServiceProvider class implements IServiceProvider interface which returns registered services with the container. We cannot instantiate ServiceProvider class because its constructors are marked with internal access modifier.
+
+ServiceCollectionServiceExtensions :
+The ServiceCollectionServiceExtensions class includes extension methods related to service registrations which can be used to add services with lifetime. AddSingleton, AddTransient, AddScoped extension methods defined in this class.
+
+ServiceCollectionContainerBuilderExtensions
+ServiceCollectionContainerBuilderExtensions class includes BuildServiceProvider extension method which creates and returns an instance of ServiceProvider.
+
+There are three ways to get an instance of IServiceProvider
